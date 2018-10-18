@@ -16,7 +16,7 @@ $RECYCLE.BIN/
 *.sdf
 *.suo
 x64
-
+*.opensdf
 # Windows shortcuts
 *.lnk
 
