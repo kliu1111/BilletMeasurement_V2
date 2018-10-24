@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="no" ?>
+<Root>
+    <GXmlNode GType="GArray" GName="Cam_Param">
+        <GXmlNode GType="GDouble" GName="Focus" Value="0.0167487" Min="-1.79769e+308" Max="1.79769e+308" Step="1" />
+        <GXmlNode GType="GDouble" GName="K1" Value="16.7083" Min="-1.79769e+308" Max="1.79769e+308" Step="1" />
+        <GXmlNode GType="GDouble" GName="K2" Value="1.79235e+007" Min="-1.79769e+308" Max="1.79769e+308" Step="1" />
+        <GXmlNode GType="GDouble" GName="K3" Value="-1.11319e+012" Min="-1.79769e+308" Max="1.79769e+308" Step="1" />
+        <GXmlNode GType="GDouble" GName="P1" Value="0.14427" Min="-1.79769e+308" Max="1.79769e+308" Step="1" />
+        <GXmlNode GType="GDouble" GName="P2" Value="0.179095" Min="-1.79769e+308" Max="1.79769e+308" Step="1" />
+        <GXmlNode GType="GDouble" GName="Cx" Value="803.627" Min="-1.79769e+308" Max="1.79769e+308" Step="1" />
+        <GXmlNode GType="GDouble" GName="Cy" Value="551.072" Min="-1.79769e+308" Max="1.79769e+308" Step="1" />
+        <GXmlNode GType="GDouble" GName="Sx" Value="4.4041e-006" Min="-1.79769e+308" Max="1.79769e+308" Step="1" />
+        <GXmlNode GType="GDouble" GName="Sy" Value="4.4e-006" Min="-1.79769e+308" Max="1.79769e+308" Step="1" />
+        <GXmlNode GType="GDouble" GName="ImageWidth" Value="1626" Min="-1.79769e+308" Max="1.79769e+308" Step="1" />
+        <GXmlNode GType="GDouble" GName="ImageHeight" Value="1236" Min="-1.79769e+308" Max="1.79769e+308" Step="1" />
+    </GXmlNode>
+</Root>

@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="no" ?>
+<Root>
+    <GXmlNode GType="GArray" GName="GArrayBase">
+        <GXmlNode GType="GDouble" GName="TransX" Value="-27.6215" Min="-1.79769e+308" Max="1.79769e+308" Step="1" />
+        <GXmlNode GType="GDouble" GName="TransY" Value="23.0418" Min="-1.79769e+308" Max="1.79769e+308" Step="1" />
+        <GXmlNode GType="GDouble" GName="TransZ" Value="915.062" Min="-1.79769e+308" Max="1.79769e+308" Step="1" />
+        <GXmlNode GType="GDouble" GName="RotX" Value="42.5584" Min="-1.79769e+308" Max="1.79769e+308" Step="1" />
+        <GXmlNode GType="GDouble" GName="RotY" Value="0.425354" Min="-1.79769e+308" Max="1.79769e+308" Step="1" />
+        <GXmlNode GType="GDouble" GName="RotZ" Value="138.139" Min="-1.79769e+308" Max="1.79769e+308" Step="1" />
+        <GXmlNode GType="GDouble" GName="Code" Value="0" Min="-1.79769e+308" Max="1.79769e+308" Step="1" />
+    </GXmlNode>
+</Root>

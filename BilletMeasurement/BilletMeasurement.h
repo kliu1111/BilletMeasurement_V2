@@ -3,6 +3,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_BilletMeasurement.h"
+#include "CalibParam.h"
 #include "BaslerCamera.h"
 #include "qextserialport/qextserialport.h"
 #include "SetTriggerParam.h"
@@ -28,6 +29,10 @@ public:
 
 public:
 	void LoadIniCamParam();
+	//加载所有的标定数据
+	void LoadCalibParam();
+	//初始化vtk部件
+	void initialVtkWidget();
 private:
 	Ui::BilletMeasurementClass ui;
 	BaslerCamera cam;
@@ -39,9 +44,19 @@ private:
 	SetTriggerParam* SetTriggerWindow;
 	QextSerialPort *myCom = nullptr;
 	bool IsOpen;
-	//初始化vtk部件
-	void initialVtkWidget();
-
+	//相机内参
+	CamInnerPara CamInner[4];
+	//CamInnerPara CamInner2;
+	//CamInnerPara CamInner3;
+	//CamInnerPara CamInner4;
+	//相机外参
+	CamPosePara CamPose[4];
+	//CamPosePara CamPose2;
+	//CamPosePara CamPose3;
+	//CamPosePara CamPose4;
+	//激光平面
+	LaserPosePara LaserPose[2];
+	//LaserPosePara LaserPose2;
 protected:
 	boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer;
 	PointCloudT::Ptr cloud;

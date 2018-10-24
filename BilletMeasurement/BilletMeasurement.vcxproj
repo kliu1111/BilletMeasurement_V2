@@ -214,6 +214,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CalibParam.h" />
     <ClInclude Include="GeneratedFiles\ui_SetTriggerParam.h" />
     <ClInclude Include="tinystr.h" />
     <ClInclude Include="tinyxml.h" />

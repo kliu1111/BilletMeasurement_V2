@@ -11,7 +11,7 @@ BilletMeasurement::BilletMeasurement(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
-	setWindowState(Qt::WindowMaximized);
+	//setWindowState(Qt::WindowMaximized);
 	//setWindowState(Qt::WindowMinimized);
 	//AllocConsole();
 	//freopen("CONOUT$", "w+t", stdout);
@@ -38,7 +38,7 @@ BilletMeasurement::BilletMeasurement(QWidget *parent)
 	// Set up the QVTK window
 	initialVtkWidget();
 
-	connect(ui.actionOpen, SIGNAL(triggered()), this, SLOT(onOpen()));
+	
 }
 
 BilletMeasurement::~BilletMeasurement()
@@ -183,7 +183,7 @@ void BilletMeasurement::SlotOpenSync()
 {
 	if (myCom == nullptr)
 	{
-		myCom = new QextSerialPort("COM4", QextSerialPort::Polling);
+		myCom = new QextSerialPort("COM5", QextSerialPort::Polling);
 		IsOpen = myCom->open(QIODevice::ReadWrite);
 	}
 	if (IsOpen)
@@ -197,7 +197,7 @@ void BilletMeasurement::SlotCloseSync()
 {
 	if (myCom == nullptr)
 	{
-		myCom = new QextSerialPort("COM4", QextSerialPort::Polling);
+		myCom = new QextSerialPort("COM5", QextSerialPort::Polling);
 		IsOpen = myCom->open(QIODevice::ReadWrite);
 	}
 	if (IsOpen)
@@ -294,6 +294,47 @@ void BilletMeasurement::LoadIniCamParam()
 	}
 }
 
+void BilletMeasurement::LoadCalibParam()
+{
+	for (int i = 0; i < 4; i++)
+	{
+		TiXmlDocument *inXml = new TiXmlDocument();
+		if (!inXml->LoadFile("./CalibParams/CamParam_[i].xml"))
+		{
+			cerr << inXml->ErrorDesc() << endl;
+		}
+
+		//定义根节点，记录xml文件的起始节点
+		TiXmlElement *inRoot = inXml->FirstChildElement(); //root指向xml文档的第一个节点
+
+		if (NULL == inRoot) //判断文件是否有内容
+		{
+			cerr << "No root element ！！！" << endl;
+			inXml->Clear();
+		}
+
+		for (TiXmlElement *inElem = inRoot->FirstChildElement(); inElem != NULL; inElem = inElem->NextSiblingElement())
+		{
+			string str = inElem->Value();
+			//两个string进行比较时，使用compare，若相等返回0
+			if (!str.compare("Cam1"))
+			{
+				TiXmlElement  *Frequency = inElem->FirstChildElement();
+				CamPara.LeftImageFrequency = atof(Frequency->FirstChild()->Value());
+
+				TiXmlElement  *ExposureTime = Frequency->NextSiblingElement();
+				CamPara.LeftExposureTime = atof(ExposureTime->FirstChild()->Value());
+
+				TiXmlElement  *ImageWidth = ExposureTime->NextSiblingElement();
+				CamPara.LeftImageWidth = atof(ImageWidth->FirstChild()->Value());
+
+				TiXmlElement  *ImageHeight = ImageWidth->NextSiblingElement();
+				CamPara.LeftImageHeight = atof(ImageHeight->FirstChild()->Value());
+			}
+		}
+	}
+}
+
 void BilletMeasurement::InitSlot()
 {
 	connect(ui.toolButton_Connect, SIGNAL(clicked()), this, SLOT(SlotCamConnect()));
@@ -312,6 +353,6 @@ void BilletMeasurement::InitSlot()
 	connect(ui.toolButton_SetSync, SIGNAL(clicked()), this, SLOT(SlotSetExTriggerParam()));
 	connect(SetTriggerWindow->ui.Btn_Ok, SIGNAL(clicked()), this, SLOT(SlotTriggerBtnOk()));
 	connect(SetTriggerWindow->ui.Btn_Cancel, SIGNAL(clicked()), this, SLOT(SlotTriggerBtnCancel()));
-
+	connect(ui.actionOpen, SIGNAL(triggered()), this, SLOT(onOpen()));
 	//connect(this, SIGNAL(aaa()), this, SLOT(SetUserInputPara()));
 }

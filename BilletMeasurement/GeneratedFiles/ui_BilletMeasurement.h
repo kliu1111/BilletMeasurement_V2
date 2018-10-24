@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
@@ -22,6 +23,7 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QSplitter>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QToolButton>
@@ -66,7 +68,18 @@ public:
     QVTKWidget *qvtkWidget;
     QGroupBox *groupBox_2;
     QWidget *tab;
-    QHBoxLayout *horizontalLayout_5;
+    QGroupBox *groupBox_5;
+    QHBoxLayout *horizontalLayout_2;
+    QTreeWidget *treeWidget_3;
+    QGroupBox *groupBox_6;
+    QSplitter *splitter_4;
+    QSpinBox *spinBox;
+    QSpinBox *spinBox_2;
+    QLabel *label_5;
+    QSplitter *splitter_2;
+    QLabel *label_3;
+    QComboBox *comboBox;
+    QLabel *label_4;
     QWidget *tabWidgetPage1;
     QVBoxLayout *verticalLayout_5;
     QHBoxLayout *horizontalLayout;
@@ -96,6 +109,8 @@ public:
     QLabel *label_LeftDown;
     QMenuBar *menuBar;
     QMenu *menuFile;
+    QMenu *menu;
+    QMenu *menu_2;
 
     void setupUi(QMainWindow *BilletMeasurementClass)
     {
@@ -174,7 +189,7 @@ public:
         treeWidget_2 = new QTreeWidget(groupBox_4);
         treeWidget_2->setObjectName(QStringLiteral("treeWidget_2"));
         treeWidget_2->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        treeWidget_2->header()->setVisible(true);
+        treeWidget_2->header()->setVisible(false);
         treeWidget_2->header()->setDefaultSectionSize(50);
         treeWidget_2->header()->setMinimumSectionSize(70);
         treeWidget_2->header()->setStretchLastSection(true);
@@ -193,7 +208,7 @@ public:
         treeWidget_5 = new QTreeWidget(groupBox_7);
         treeWidget_5->setObjectName(QStringLiteral("treeWidget_5"));
         treeWidget_5->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        treeWidget_5->header()->setVisible(true);
+        treeWidget_5->header()->setVisible(false);
         treeWidget_5->header()->setDefaultSectionSize(50);
         treeWidget_5->header()->setMinimumSectionSize(70);
         treeWidget_5->header()->setStretchLastSection(true);
@@ -275,10 +290,48 @@ public:
         tab = new QWidget();
         tab->setObjectName(QStringLiteral("tab"));
         tab->setInputMethodHints(Qt::ImhNone);
-        horizontalLayout_5 = new QHBoxLayout(tab);
-        horizontalLayout_5->setSpacing(6);
-        horizontalLayout_5->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        groupBox_5 = new QGroupBox(tab);
+        groupBox_5->setObjectName(QStringLiteral("groupBox_5"));
+        groupBox_5->setGeometry(QRect(10, 130, 211, 521));
+        horizontalLayout_2 = new QHBoxLayout(groupBox_5);
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        treeWidget_3 = new QTreeWidget(groupBox_5);
+        new QTreeWidgetItem(treeWidget_3);
+        treeWidget_3->setObjectName(QStringLiteral("treeWidget_3"));
+
+        horizontalLayout_2->addWidget(treeWidget_3);
+
+        groupBox_6 = new QGroupBox(tab);
+        groupBox_6->setObjectName(QStringLiteral("groupBox_6"));
+        groupBox_6->setGeometry(QRect(230, 130, 741, 531));
+        splitter_4 = new QSplitter(groupBox_6);
+        splitter_4->setObjectName(QStringLiteral("splitter_4"));
+        splitter_4->setGeometry(QRect(250, 20, 103, 20));
+        splitter_4->setOrientation(Qt::Horizontal);
+        spinBox = new QSpinBox(groupBox_6);
+        spinBox->setObjectName(QStringLiteral("spinBox"));
+        spinBox->setGeometry(QRect(190, 20, 101, 20));
+        spinBox_2 = new QSpinBox(groupBox_6);
+        spinBox_2->setObjectName(QStringLiteral("spinBox_2"));
+        spinBox_2->setGeometry(QRect(370, 20, 91, 20));
+        label_5 = new QLabel(groupBox_6);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        label_5->setGeometry(QRect(309, 20, 51, 20));
+        splitter_2 = new QSplitter(groupBox_6);
+        splitter_2->setObjectName(QStringLiteral("splitter_2"));
+        splitter_2->setGeometry(QRect(20, 20, 103, 20));
+        splitter_2->setOrientation(Qt::Horizontal);
+        label_3 = new QLabel(splitter_2);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        splitter_2->addWidget(label_3);
+        comboBox = new QComboBox(splitter_2);
+        comboBox->setObjectName(QStringLiteral("comboBox"));
+        splitter_2->addWidget(comboBox);
+        label_4 = new QLabel(groupBox_6);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(140, 20, 51, 20));
         tabWidget->addTab(tab, QString());
         tabWidgetPage1 = new QWidget();
         tabWidgetPage1->setObjectName(QStringLiteral("tabWidgetPage1"));
@@ -509,9 +562,15 @@ public:
         menuBar->setGeometry(QRect(0, 0, 996, 17));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
+        menu = new QMenu(menuBar);
+        menu->setObjectName(QStringLiteral("menu"));
+        menu_2 = new QMenu(menuBar);
+        menu_2->setObjectName(QStringLiteral("menu_2"));
         BilletMeasurementClass->setMenuBar(menuBar);
 
         menuBar->addAction(menuFile->menuAction());
+        menuBar->addAction(menu->menuAction());
+        menuBar->addAction(menu_2->menuAction());
         menuFile->addAction(actionOpen);
 
         retranslateUi(BilletMeasurementClass);
@@ -549,6 +608,25 @@ public:
         groupBox->setTitle(QApplication::translate("BilletMeasurementClass", "\351\222\242\345\235\257\350\275\256\345\273\223\346\230\276\347\244\272", 0));
         groupBox_2->setTitle(QApplication::translate("BilletMeasurementClass", "\351\222\242\345\235\257\350\275\256\345\273\223\346\265\213\351\207\217\344\277\241\346\201\257", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("BilletMeasurementClass", "\350\275\256\345\273\223\346\265\213\351\207\217", 0));
+        groupBox_5->setTitle(QApplication::translate("BilletMeasurementClass", "\345\216\206\345\217\262\350\256\260\345\275\225\346\237\245\350\257\242", 0));
+        QTreeWidgetItem *___qtreewidgetitem2 = treeWidget_3->headerItem();
+        ___qtreewidgetitem2->setText(0, QApplication::translate("BilletMeasurementClass", "\345\216\206\345\217\262\351\222\242\345\235\257\344\277\241\346\201\257", 0));
+
+        const bool __sortingEnabled = treeWidget_3->isSortingEnabled();
+        treeWidget_3->setSortingEnabled(false);
+        QTreeWidgetItem *___qtreewidgetitem3 = treeWidget_3->topLevelItem(0);
+        ___qtreewidgetitem3->setText(0, QApplication::translate("BilletMeasurementClass", "\351\222\242\345\235\257\345\234\250\345\275\225\346\227\245\346\234\237", 0));
+        treeWidget_3->setSortingEnabled(__sortingEnabled);
+
+        groupBox_6->setTitle(QApplication::translate("BilletMeasurementClass", "\346\225\260\346\215\256\350\247\206\345\233\276", 0));
+        label_5->setText(QApplication::translate("BilletMeasurementClass", "\347\273\223\346\235\237\346\227\266\351\227\264", 0));
+        label_3->setText(QApplication::translate("BilletMeasurementClass", "\351\222\242\345\235\257\347\261\273\345\236\213", 0));
+        comboBox->clear();
+        comboBox->insertItems(0, QStringList()
+         << QApplication::translate("BilletMeasurementClass", "\346\226\271\345\235\257", 0)
+         << QApplication::translate("BilletMeasurementClass", "\346\235\277\345\235\257", 0)
+        );
+        label_4->setText(QApplication::translate("BilletMeasurementClass", "\350\265\267\345\247\213\346\227\266\351\227\264", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("BilletMeasurementClass", "\346\237\245\347\234\213\345\216\206\345\217\262", 0));
         toolButton_Connect->setText(QApplication::translate("BilletMeasurementClass", "\350\277\236\346\216\245\347\233\270\346\234\272", 0));
         toolButton_Disconnect->setText(QApplication::translate("BilletMeasurementClass", "\346\226\255\345\274\200\347\233\270\346\234\272", 0));
@@ -557,16 +635,16 @@ public:
         toolButton_OpenSync->setText(QApplication::translate("BilletMeasurementClass", "\347\233\270\346\234\272\345\220\214\346\255\245\351\207\207\351\233\206", 0));
         toolButton_CloseSync->setText(QApplication::translate("BilletMeasurementClass", "\345\205\263\351\227\255\345\220\214\346\255\245\351\207\207\351\233\206", 0));
         toolButton_SetSync->setText(QApplication::translate("BilletMeasurementClass", "\350\256\276\347\275\256\350\247\246\345\217\221\345\217\202\346\225\260", 0));
-        QTreeWidgetItem *___qtreewidgetitem2 = treeWidget->headerItem();
-        ___qtreewidgetitem2->setText(8, QApplication::translate("BilletMeasurementClass", "\345\233\276\345\203\217\351\253\230\345\272\246", 0));
-        ___qtreewidgetitem2->setText(7, QApplication::translate("BilletMeasurementClass", "\345\233\276\345\203\217\345\256\275\345\272\246", 0));
-        ___qtreewidgetitem2->setText(6, QApplication::translate("BilletMeasurementClass", "\346\233\235\345\205\211\346\227\266\351\227\264", 0));
-        ___qtreewidgetitem2->setText(5, QApplication::translate("BilletMeasurementClass", "\347\233\270\346\234\272\345\270\247\351\242\221", 0));
-        ___qtreewidgetitem2->setText(4, QApplication::translate("BilletMeasurementClass", "\347\233\270\346\234\272\347\212\266\346\200\201", 0));
-        ___qtreewidgetitem2->setText(3, QApplication::translate("BilletMeasurementClass", "\347\233\270\346\234\272IP", 0));
-        ___qtreewidgetitem2->setText(2, QApplication::translate("BilletMeasurementClass", "\347\233\270\346\234\272MAC", 0));
-        ___qtreewidgetitem2->setText(1, QApplication::translate("BilletMeasurementClass", "\347\233\270\346\234\272ID", 0));
-        ___qtreewidgetitem2->setText(0, QApplication::translate("BilletMeasurementClass", "\347\233\270\346\234\272\345\236\213\345\217\267", 0));
+        QTreeWidgetItem *___qtreewidgetitem4 = treeWidget->headerItem();
+        ___qtreewidgetitem4->setText(8, QApplication::translate("BilletMeasurementClass", "\345\233\276\345\203\217\351\253\230\345\272\246", 0));
+        ___qtreewidgetitem4->setText(7, QApplication::translate("BilletMeasurementClass", "\345\233\276\345\203\217\345\256\275\345\272\246", 0));
+        ___qtreewidgetitem4->setText(6, QApplication::translate("BilletMeasurementClass", "\346\233\235\345\205\211\346\227\266\351\227\264", 0));
+        ___qtreewidgetitem4->setText(5, QApplication::translate("BilletMeasurementClass", "\347\233\270\346\234\272\345\270\247\351\242\221", 0));
+        ___qtreewidgetitem4->setText(4, QApplication::translate("BilletMeasurementClass", "\347\233\270\346\234\272\347\212\266\346\200\201", 0));
+        ___qtreewidgetitem4->setText(3, QApplication::translate("BilletMeasurementClass", "\347\233\270\346\234\272IP", 0));
+        ___qtreewidgetitem4->setText(2, QApplication::translate("BilletMeasurementClass", "\347\233\270\346\234\272MAC", 0));
+        ___qtreewidgetitem4->setText(1, QApplication::translate("BilletMeasurementClass", "\347\233\270\346\234\272ID", 0));
+        ___qtreewidgetitem4->setText(0, QApplication::translate("BilletMeasurementClass", "\347\233\270\346\234\272\345\236\213\345\217\267", 0));
         label_RightUp->setText(QString());
         label_7->setText(QApplication::translate("BilletMeasurementClass", "Cam3", 0));
         label_LeftUp->setText(QString());
@@ -576,7 +654,9 @@ public:
         label_RightDown->setText(QString());
         label_LeftDown->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tabWidgetPage1), QApplication::translate("BilletMeasurementClass", "\347\233\270\346\234\272\351\207\207\351\233\206", 0));
-        menuFile->setTitle(QApplication::translate("BilletMeasurementClass", "file", 0));
+        menuFile->setTitle(QApplication::translate("BilletMeasurementClass", "\346\226\207\344\273\266", 0));
+        menu->setTitle(QApplication::translate("BilletMeasurementClass", "\347\274\226\350\276\221", 0));
+        menu_2->setTitle(QApplication::translate("BilletMeasurementClass", "\345\270\256\345\212\251", 0));
     } // retranslateUi
 
 };
