@@ -277,21 +277,8 @@ void BaslerCamera::GrabThreadFunction()
 
 					LeftUpLabelAdd->setPixmap(QPixmap::fromImage(LeftImg).scaled(LeftUpLabelAdd->size(), Qt::KeepAspectRatioByExpanding));
 					RightUpLabelAdd->setPixmap(QPixmap::fromImage(RightImg).scaled(RightUpLabelAdd->size(), Qt::KeepAspectRatioByExpanding));
-					Lpixmap = LeftUpLabelAdd->pixmap();
-					Rpixmap = RightUpLabelAdd->pixmap();
-					if (Rpixmap && Lpixmap)
-					{
-						time = QDateTime::currentDateTime();
-						//str_time = time.toString("yyyy-MM-dd_hh-mm-ss");
-						str_time = time.toString("yyyy-MM-dd-hh-mm-ss-zzz");
-						Lpixmap->save(("image/L_image/") + str_time + ".jpg");
-						Rpixmap->save(("image/R_image/") + str_time + ".jpg");
-					//	//CImagePersistence::Save(ImageFileFormat_Png, FileName, LeftUpptrGrabResult);
-					//	//CImagePersistence::Save(ImageFileFormat_Tiff, aa, LeftUpptrGrabResult);
-					//	CImagePersistence::Save(ImageFileFormat_Tiff, "image/aaa.jpg", RightUpptrGrabResult);
-					//	
-					}
-
+					//Lpixmap = LeftUpLabelAdd->pixmap();
+					//Rpixmap = RightUpLabelAdd->pixmap();
 					QCoreApplication::processEvents();
 				}
 			}
@@ -305,6 +292,30 @@ void BaslerCamera::GrabThreadFunction()
 			<< e.GetDescription() << endl;
 	}
 
+}
+
+//±£´æÍ¼Ïñ
+void  BaslerCamera::SaveImg()
+{
+	try
+	{
+		if (LeftUpLabelAdd->pixmap() && RightUpLabelAdd->pixmap())
+	   {
+		   time = QDateTime::currentDateTime();
+		   str_time = time.toString("yyyy-MM-dd-hh-mm-ss-zzz");
+		   QString strL = "image/L_image/" + str_time + ".jpg";
+		   QString strR = "image/R_image/" + str_time + ".jpg";
+		   CImagePersistence::Save(ImageFileFormat_Tiff, strL.toStdString().c_str(), LeftUpptrGrabResult);
+		   CImagePersistence::Save(ImageFileFormat_Tiff, strR.toStdString().c_str(), RightUpptrGrabResult);
+	   }
+
+	}
+	catch (GenICam::GenericException &e)
+	{
+		// Error handling.
+		cerr << "An exception occurred." << endl
+			<< e.GetDescription() << endl;
+	}
 }
 
 bool BaslerCamera::IsGrabbing()
