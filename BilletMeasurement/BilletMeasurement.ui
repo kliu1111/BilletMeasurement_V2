@@ -50,7 +50,7 @@
        <bool>false</bool>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab_2">
        <property name="enabled">
@@ -624,6 +624,44 @@
            </widget>
           </item>
           <item>
+           <widget class="QToolButton" name="toolButton_SaveImg">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>80</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>保存图像</string>
+            </property>
+            <property name="icon">
+             <iconset resource="BilletMeasurement.qrc">
+              <normaloff>:/image/ico/save.ico</normaloff>:/image/ico/save.ico</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextUnderIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+            <property name="arrowType">
+             <enum>Qt::NoArrow</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
            <spacer name="horizontalSpacer_10">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -790,12 +828,6 @@
          <layout class="QGridLayout" name="Layout_ImageShow" rowstretch="1,20,1,20" columnstretch="0,0">
           <item row="1" column="1">
            <widget class="QLabel" name="label_RightUp">
-            <property name="maximumSize">
-             <size>
-              <width>800</width>
-              <height>600</height>
-             </size>
-            </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgb(0, 0, 0);</string>
             </property>
@@ -816,12 +848,6 @@
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="label_LeftUp">
-            <property name="maximumSize">
-             <size>
-              <width>800</width>
-              <height>600</height>
-             </size>
-            </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgb(0, 0, 0);</string>
             </property>
@@ -903,7 +929,7 @@
      <x>0</x>
      <y>0</y>
      <width>996</width>
-     <height>17</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

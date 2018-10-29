@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_BilletMeasurement_t {
-    QByteArrayData data[20];
-    char stringdata0[268];
+    QByteArrayData data[21];
+    char stringdata0[280];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,26 +39,28 @@ QT_MOC_LITERAL(6, 63, 13), // "SlotStartGrab"
 QT_MOC_LITERAL(7, 77, 13), // "SlotPauseGrab"
 QT_MOC_LITERAL(8, 91, 12), // "SlotOpenSync"
 QT_MOC_LITERAL(9, 104, 13), // "SlotCloseSync"
-QT_MOC_LITERAL(10, 118, 20), // "TreeWidgetOpenEditor"
-QT_MOC_LITERAL(11, 139, 16), // "QTreeWidgetItem*"
-QT_MOC_LITERAL(12, 156, 4), // "item"
-QT_MOC_LITERAL(13, 161, 3), // "col"
-QT_MOC_LITERAL(14, 165, 21), // "TreeWidgetCloseEditor"
-QT_MOC_LITERAL(15, 187, 21), // "SlotSetExTriggerParam"
-QT_MOC_LITERAL(16, 209, 16), // "SlotTriggerBtnOk"
-QT_MOC_LITERAL(17, 226, 20), // "SlotTriggerBtnCancel"
-QT_MOC_LITERAL(18, 247, 11), // "GetUserData"
-QT_MOC_LITERAL(19, 259, 8) // "InitSlot"
+QT_MOC_LITERAL(10, 118, 11), // "SlotSaveImg"
+QT_MOC_LITERAL(11, 130, 20), // "TreeWidgetOpenEditor"
+QT_MOC_LITERAL(12, 151, 16), // "QTreeWidgetItem*"
+QT_MOC_LITERAL(13, 168, 4), // "item"
+QT_MOC_LITERAL(14, 173, 3), // "col"
+QT_MOC_LITERAL(15, 177, 21), // "TreeWidgetCloseEditor"
+QT_MOC_LITERAL(16, 199, 21), // "SlotSetExTriggerParam"
+QT_MOC_LITERAL(17, 221, 16), // "SlotTriggerBtnOk"
+QT_MOC_LITERAL(18, 238, 20), // "SlotTriggerBtnCancel"
+QT_MOC_LITERAL(19, 259, 11), // "GetUserData"
+QT_MOC_LITERAL(20, 271, 8) // "InitSlot"
 
     },
     "BilletMeasurement\0aaa\0\0onOpen\0"
     "SlotCamConnect\0SlotCamDisconnect\0"
     "SlotStartGrab\0SlotPauseGrab\0SlotOpenSync\0"
-    "SlotCloseSync\0TreeWidgetOpenEditor\0"
-    "QTreeWidgetItem*\0item\0col\0"
-    "TreeWidgetCloseEditor\0SlotSetExTriggerParam\0"
-    "SlotTriggerBtnOk\0SlotTriggerBtnCancel\0"
-    "GetUserData\0InitSlot"
+    "SlotCloseSync\0SlotSaveImg\0"
+    "TreeWidgetOpenEditor\0QTreeWidgetItem*\0"
+    "item\0col\0TreeWidgetCloseEditor\0"
+    "SlotSetExTriggerParam\0SlotTriggerBtnOk\0"
+    "SlotTriggerBtnCancel\0GetUserData\0"
+    "InitSlot"
 };
 #undef QT_MOC_LITERAL
 
@@ -68,7 +70,7 @@ static const uint qt_meta_data_BilletMeasurement[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      15,   14, // methods
+      16,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -76,23 +78,24 @@ static const uint qt_meta_data_BilletMeasurement[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   89,    2, 0x06 /* Public */,
+       1,    0,   94,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       3,    0,   90,    2, 0x0a /* Public */,
-       4,    0,   91,    2, 0x0a /* Public */,
-       5,    0,   92,    2, 0x0a /* Public */,
-       6,    0,   93,    2, 0x0a /* Public */,
-       7,    0,   94,    2, 0x0a /* Public */,
-       8,    0,   95,    2, 0x0a /* Public */,
-       9,    0,   96,    2, 0x0a /* Public */,
-      10,    2,   97,    2, 0x0a /* Public */,
-      14,    0,  102,    2, 0x0a /* Public */,
-      15,    0,  103,    2, 0x0a /* Public */,
-      16,    0,  104,    2, 0x0a /* Public */,
-      17,    0,  105,    2, 0x0a /* Public */,
-      18,    0,  106,    2, 0x0a /* Public */,
-      19,    0,  107,    2, 0x0a /* Public */,
+       3,    0,   95,    2, 0x0a /* Public */,
+       4,    0,   96,    2, 0x0a /* Public */,
+       5,    0,   97,    2, 0x0a /* Public */,
+       6,    0,   98,    2, 0x0a /* Public */,
+       7,    0,   99,    2, 0x0a /* Public */,
+       8,    0,  100,    2, 0x0a /* Public */,
+       9,    0,  101,    2, 0x0a /* Public */,
+      10,    0,  102,    2, 0x0a /* Public */,
+      11,    2,  103,    2, 0x0a /* Public */,
+      15,    0,  108,    2, 0x0a /* Public */,
+      16,    0,  109,    2, 0x0a /* Public */,
+      17,    0,  110,    2, 0x0a /* Public */,
+      18,    0,  111,    2, 0x0a /* Public */,
+      19,    0,  112,    2, 0x0a /* Public */,
+      20,    0,  113,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -105,7 +108,8 @@ static const uint qt_meta_data_BilletMeasurement[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 11, QMetaType::Int,   12,   13,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 12, QMetaType::Int,   13,   14,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -130,13 +134,14 @@ void BilletMeasurement::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         case 5: _t->SlotPauseGrab(); break;
         case 6: _t->SlotOpenSync(); break;
         case 7: _t->SlotCloseSync(); break;
-        case 8: _t->TreeWidgetOpenEditor((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 9: _t->TreeWidgetCloseEditor(); break;
-        case 10: _t->SlotSetExTriggerParam(); break;
-        case 11: _t->SlotTriggerBtnOk(); break;
-        case 12: _t->SlotTriggerBtnCancel(); break;
-        case 13: _t->GetUserData(); break;
-        case 14: _t->InitSlot(); break;
+        case 8: _t->SlotSaveImg(); break;
+        case 9: _t->TreeWidgetOpenEditor((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 10: _t->TreeWidgetCloseEditor(); break;
+        case 11: _t->SlotSetExTriggerParam(); break;
+        case 12: _t->SlotTriggerBtnOk(); break;
+        case 13: _t->SlotTriggerBtnCancel(); break;
+        case 14: _t->GetUserData(); break;
+        case 15: _t->InitSlot(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -176,13 +181,13 @@ int BilletMeasurement::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 15)
+        if (_id < 16)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 15;
+        _id -= 16;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 15)
+        if (_id < 16)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 15;
+        _id -= 16;
     }
     return _id;
 }

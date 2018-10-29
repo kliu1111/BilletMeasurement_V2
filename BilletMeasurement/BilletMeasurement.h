@@ -75,6 +75,8 @@ public slots :
 	void SlotOpenSync();
 	//控制帧同步板关闭相机采集
 	void SlotCloseSync();
+	//保存当前的图像
+	void SlotSaveImg();
 	//双击控件时开启编辑状态
 	void TreeWidgetOpenEditor(QTreeWidgetItem *item, int col);
 	//控件变化时关闭编辑状态

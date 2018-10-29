@@ -90,6 +90,7 @@ public:
     QToolButton *toolButton_OpenSync;
     QToolButton *toolButton_CloseSync;
     QToolButton *toolButton_SetSync;
+    QToolButton *toolButton_SaveImg;
     QSpacerItem *horizontalSpacer_10;
     QSpacerItem *horizontalSpacer_9;
     QSpacerItem *horizontalSpacer_12;
@@ -434,6 +435,20 @@ public:
 
         horizontalLayout->addWidget(toolButton_SetSync);
 
+        toolButton_SaveImg = new QToolButton(tabWidgetPage1);
+        toolButton_SaveImg->setObjectName(QStringLiteral("toolButton_SaveImg"));
+        toolButton_SaveImg->setMinimumSize(QSize(80, 0));
+        toolButton_SaveImg->setMaximumSize(QSize(80, 16777215));
+        QIcon icon9;
+        icon9.addFile(QStringLiteral(":/image/ico/save.ico"), QSize(), QIcon::Normal, QIcon::Off);
+        toolButton_SaveImg->setIcon(icon9);
+        toolButton_SaveImg->setIconSize(QSize(24, 24));
+        toolButton_SaveImg->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+        toolButton_SaveImg->setAutoRaise(true);
+        toolButton_SaveImg->setArrowType(Qt::NoArrow);
+
+        horizontalLayout->addWidget(toolButton_SaveImg);
+
         horizontalSpacer_10 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_10);
@@ -491,7 +506,6 @@ public:
         Layout_ImageShow->setObjectName(QStringLiteral("Layout_ImageShow"));
         label_RightUp = new QLabel(tabWidgetPage1);
         label_RightUp->setObjectName(QStringLiteral("label_RightUp"));
-        label_RightUp->setMaximumSize(QSize(800, 600));
         label_RightUp->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
 
         Layout_ImageShow->addWidget(label_RightUp, 1, 1, 1, 1);
@@ -504,7 +518,6 @@ public:
 
         label_LeftUp = new QLabel(tabWidgetPage1);
         label_LeftUp->setObjectName(QStringLiteral("label_LeftUp"));
-        label_LeftUp->setMaximumSize(QSize(800, 600));
         label_LeftUp->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
         label_LeftUp->setTextFormat(Qt::AutoText);
 
@@ -559,7 +572,7 @@ public:
         BilletMeasurementClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(BilletMeasurementClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 996, 17));
+        menuBar->setGeometry(QRect(0, 0, 996, 23));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menu = new QMenu(menuBar);
@@ -575,7 +588,7 @@ public:
 
         retranslateUi(BilletMeasurementClass);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(BilletMeasurementClass);
@@ -635,6 +648,7 @@ public:
         toolButton_OpenSync->setText(QApplication::translate("BilletMeasurementClass", "\347\233\270\346\234\272\345\220\214\346\255\245\351\207\207\351\233\206", 0));
         toolButton_CloseSync->setText(QApplication::translate("BilletMeasurementClass", "\345\205\263\351\227\255\345\220\214\346\255\245\351\207\207\351\233\206", 0));
         toolButton_SetSync->setText(QApplication::translate("BilletMeasurementClass", "\350\256\276\347\275\256\350\247\246\345\217\221\345\217\202\346\225\260", 0));
+        toolButton_SaveImg->setText(QApplication::translate("BilletMeasurementClass", "\344\277\235\345\255\230\345\233\276\345\203\217", 0));
         QTreeWidgetItem *___qtreewidgetitem4 = treeWidget->headerItem();
         ___qtreewidgetitem4->setText(8, QApplication::translate("BilletMeasurementClass", "\345\233\276\345\203\217\351\253\230\345\272\246", 0));
         ___qtreewidgetitem4->setText(7, QApplication::translate("BilletMeasurementClass", "\345\233\276\345\203\217\345\256\275\345\272\246", 0));

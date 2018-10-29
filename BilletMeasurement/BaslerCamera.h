@@ -74,6 +74,9 @@ public:
 	//取得相机的初始参数
 	void GetCamInitPara();
 
+	//保存图像
+	void SaveImg();
+
 	//设置相机参数
 	void SetCamPara(CameraPara CamPara);
 	void SetIniCamParam(CameraPara CamPara);

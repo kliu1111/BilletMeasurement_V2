@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="BilletMeasurement"/>
   <qresource prefix="image">
+    <file>ico/save.ico</file>
     <file>ico/syncing.ico</file>
     <file>ico/settings.ico</file>
     <file>ico/camera.ico</file>

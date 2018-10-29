@@ -206,10 +206,10 @@ void BilletMeasurement::SlotCloseSync()
 	}
 }
 
-//void BilletMeasurement::SetUserInputPara()
-//{
-//	cam.SetCamPara(para);
-//}
+void BilletMeasurement::SlotSaveImg()
+{
+	cam.SaveImg();
+}
 
 void BilletMeasurement::SlotSetExTriggerParam()
 {
@@ -355,4 +355,5 @@ void BilletMeasurement::InitSlot()
 	connect(SetTriggerWindow->ui.Btn_Cancel, SIGNAL(clicked()), this, SLOT(SlotTriggerBtnCancel()));
 	connect(ui.actionOpen, SIGNAL(triggered()), this, SLOT(onOpen()));
 	//connect(this, SIGNAL(aaa()), this, SLOT(SetUserInputPara()));
+	connect(ui.toolButton_SaveImg, SIGNAL(clicked()), this, SLOT(SlotSaveImg()));
 }
