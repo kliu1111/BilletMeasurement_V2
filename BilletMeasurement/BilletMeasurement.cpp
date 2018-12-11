@@ -13,8 +13,8 @@ BilletMeasurement::BilletMeasurement(QWidget *parent)
 	ui.setupUi(this);
 	//setWindowState(Qt::WindowMaximized);
 	//setWindowState(Qt::WindowMinimized);
-	//AllocConsole();
-	//freopen("CONOUT$", "w+t", stdout);
+	AllocConsole();
+	freopen("CONOUT$", "w+t", stdout);
 	LoadIniCamParam();
 
 	cam.GetLeftUpLabelAddress(*ui.label_LeftUp);

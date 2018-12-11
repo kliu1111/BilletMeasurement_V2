@@ -1,17 +1,17 @@
 <CameraID>
 
   <Cam1>
-    <CamFrequency>20</CamFrequency>
-    <CamExposureTime>30000</CamExposureTime>
-    <ImageWidth>800</ImageWidth>
-    <ImageHeight>600</ImageHeight>
+    <CamFrequency>30</CamFrequency>
+    <CamExposureTime>1000</CamExposureTime>
+    <ImageWidth>1626</ImageWidth>
+    <ImageHeight>1236</ImageHeight>
   </Cam1>  
   
   <Cam2>
-    <CamFrequency>20</CamFrequency>
-    <CamExposureTime>30000</CamExposureTime>
-    <ImageWidth>800</ImageWidth>
-    <ImageHeight>600</ImageHeight>
+    <CamFrequency>30</CamFrequency>
+    <CamExposureTime>1000</CamExposureTime>
+    <ImageWidth>1626</ImageWidth>
+    <ImageHeight>1236</ImageHeight>
   </Cam2>  
   
 </railtype>

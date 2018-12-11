@@ -135,6 +135,10 @@ string BinaryToIp(vector<int> binary)
 	return ip;
 }
 
+//IPylonDevice *m_pCamera;   
+//CIntegerPtr m_pHeartbeatTimeout = m_pCamera->GetTLNodeMap()->GetNode("HeartbeatTimeout“); 
+//m_pHeartbeatTimeout->SetValue(1000);//单位毫秒
+
 void BaslerCamera::Connect()
 {
 	//对所有的相机设备进行初始化
@@ -180,20 +184,18 @@ void BaslerCamera::Connect()
 		}
 
 		CamList.Open();
-		CamList[0].TriggerMode.SetValue(Basler_GigECamera::TriggerMode_On);
-		CamList[1].TriggerMode.SetValue(Basler_GigECamera::TriggerMode_On);
-		//CamList[2].TriggerMode.SetValue(Basler_GigECamera::TriggerMode_On);
-		//CamList[3].TriggerMode.SetValue(Basler_GigECamera::TriggerMode_On);
-		CamList[0].TriggerSource.SetValue(Basler_GigECamera::TriggerSource_Line1);
-		CamList[1].TriggerSource.SetValue(Basler_GigECamera::TriggerSource_Line1);
-		//CamList[2].TriggerSource.SetValue(Basler_GigECamera::TriggerSource_Line1);
-		//CamList[3].TriggerSource.SetValue(Basler_GigECamera::TriggerSource_Line1);
+		//CamList[0].TriggerMode.SetValue(Basler_GigECamera::TriggerMode_On);
+		//CamList[1].TriggerMode.SetValue(Basler_GigECamera::TriggerMode_On);
+
+		//CamList[0].TriggerSource.SetValue(Basler_GigECamera::TriggerSource_Line1);
+		//CamList[1].TriggerSource.SetValue(Basler_GigECamera::TriggerSource_Line1);
+
 
 		//该代码有效解决相机被占用的问题
-		CHeartbeatHelper cam1_heartbeatHelper(CamList[0]);
-		CHeartbeatHelper cam2_heartbeatHelper(CamList[1]);
-		cam1_heartbeatHelper.SetValue(500);  // 1000 ms timeout
-		cam2_heartbeatHelper.SetValue(500);  // 1000 ms timeout
+		//CHeartbeatHelper cam1_heartbeatHelper(CamList[0]);
+		//CHeartbeatHelper cam2_heartbeatHelper(CamList[1]);
+		//cam1_heartbeatHelper.SetValue(500);  // 1000 ms timeout
+		//cam2_heartbeatHelper.SetValue(500);  // 1000 ms timeout
 		//CHeartbeatHelper cam3_heartbeatHelper(CamList[2]);
 		//CHeartbeatHelper cam4_heartbeatHelper(CamList[3]);
 		//cam3_heartbeatHelper.SetValue(500);  // 1000 ms timeout
@@ -261,27 +263,66 @@ void BaslerCamera::GrabThread(BaslerCamera* pClass)
 {
 	pClass->GrabThreadFunction();
 }
+QImage BaslerCamera::Mat2Image(cv::Mat cvImg)
+{
+	QImage mImage;
+	if (cvImg.channels() == 3)                             //3 channels color image
+	{
 
+		cv::cvtColor(cvImg, cvImg, CV_BGR2RGB);
+		mImage = QImage((const unsigned char*)(cvImg.data),
+			cvImg.cols, cvImg.rows,
+			cvImg.cols*cvImg.channels(),
+			QImage::Format_RGB888);
+	}
+	else if (cvImg.channels() == 1)                    //grayscale image
+	{
+		mImage = QImage((const unsigned char*)(cvImg.data),
+			cvImg.cols, cvImg.rows,
+			cvImg.cols*cvImg.channels(),
+			QImage::Format_Indexed8);
+	}
+	else
+	{
+		mImage = QImage((const unsigned char*)(cvImg.data),
+			cvImg.cols, cvImg.rows,
+			cvImg.cols*cvImg.channels(),
+			QImage::Format_RGB888);
+	}
+
+	return mImage;
+}
 void BaslerCamera::GrabThreadFunction()
 {
 	try
 	{
-		while (CamList[0].IsGrabbing() && CamList[1].IsGrabbing())
+		while (CamList.IsGrabbing())
 		{
-			if (CamList[0].RetrieveResult(5000, LeftUpptrGrabResult, TimeoutHandling_Return) && CamList[1].RetrieveResult(5000, RightUpptrGrabResult, TimeoutHandling_Return))
+			if (CamList[0].RetrieveResult(3000, LeftUpptrGrabResult, TimeoutHandling_ThrowException) && CamList[1].RetrieveResult(3000, RightUpptrGrabResult, TimeoutHandling_ThrowException))
 			{
 				if (LeftUpptrGrabResult->GrabSucceeded() && RightUpptrGrabResult->GrabSucceeded())
 				{
-					LeftImg = QImage((unsigned char *)(LeftUpptrGrabResult->GetBuffer()), LeftUpptrGrabResult->GetWidth(), LeftUpptrGrabResult->GetHeight(), QImage::Format_Indexed8);
-					RightImg = QImage((unsigned char *)(RightUpptrGrabResult->GetBuffer()), RightUpptrGrabResult->GetWidth(), RightUpptrGrabResult->GetHeight(), QImage::Format_Indexed8);
+					cv::Mat imgFre(rows, cols, CV_8UC1, (uint8_t *)LeftUpptrGrabResult->GetBuffer()); //mono
+					QImage disImg = Mat2Image(imgFre);
+					LeftUpLabelAdd->setPixmap(QPixmap::fromImage(disImg).scaled(LeftUpLabelAdd->width(),LeftUpLabelAdd->height(),Qt::KeepAspectRatioByExpanding));
 
-					LeftUpLabelAdd->setPixmap(QPixmap::fromImage(LeftImg).scaled(LeftUpLabelAdd->size(), Qt::KeepAspectRatioByExpanding));
-					RightUpLabelAdd->setPixmap(QPixmap::fromImage(RightImg).scaled(RightUpLabelAdd->size(), Qt::KeepAspectRatioByExpanding));
-					//Lpixmap = LeftUpLabelAdd->pixmap();
-					//Rpixmap = RightUpLabelAdd->pixmap();
+					cv::Mat imgFre1(rows, cols, CV_8UC1, (uint8_t *)RightUpptrGrabResult->GetBuffer()); //mono
+					QImage disImg1 = Mat2Image(imgFre1);
+					RightUpLabelAdd->setPixmap(QPixmap::fromImage(disImg1).scaled(RightUpLabelAdd->width(), RightUpLabelAdd->height(), Qt::KeepAspectRatioByExpanding));
+
+					//LeftImg = QImage((unsigned char *)(LeftUpptrGrabResult->GetBuffer()), LeftUpptrGrabResult->GetWidth(), LeftUpptrGrabResult->GetHeight(), QImage::Format_Indexed8);
+					//RightImg = QImage((unsigned char *)(RightUpptrGrabResult->GetBuffer()), RightUpptrGrabResult->GetWidth(), RightUpptrGrabResult->GetHeight(), QImage::Format_Indexed8);
+
+					////LeftUpLabelAdd->setPixmap(QPixmap::fromImage(LeftImg).scaled(LeftUpLabelAdd->width(),LeftUpLabelAdd->height(), Qt::KeepAspectRatioByExpanding));
+					////RightUpLabelAdd->setPixmap(QPixmap::fromImage(RightImg).scaled(RightUpLabelAdd->width(),RightUpLabelAdd->height(), Qt::KeepAspectRatioByExpanding));
+
+					//LeftUpLabelAdd->setPixmap(QPixmap::fromImage(LeftImg).scaled(LeftUpLabelAdd->size(), Qt::KeepAspectRatioByExpanding));
+					//RightUpLabelAdd->setPixmap(QPixmap::fromImage(RightImg).scaled(RightUpLabelAdd->size(), Qt::KeepAspectRatioByExpanding));
 					QCoreApplication::processEvents();
 				}
+
 			}
+			
 		}
 
 	}

@@ -14,7 +14,10 @@
 #include <pylon/gige/BaslerGigEInstantCameraArray.h>
 #include <thread>
 #include <vector>
+#include <opencv2\opencv.hpp>
+#include <iostream>
 
+using namespace cv;
 using namespace std;
 using namespace Pylon;
 
@@ -40,7 +43,7 @@ public:
 public:
 	BaslerCamera();
 	~BaslerCamera();
-
+	QImage Mat2Image(cv::Mat);
 	//相机数组
 	CBaslerGigEInstantCameraArray CamList;
 	QImage LeftImg;
@@ -49,6 +52,8 @@ public:
 	const QPixmap *Rpixmap;
 	QString str_time;
 	QDateTime time;
+	uint32_t rows = 1236;
+	uint32_t cols = 1626;
 
 	//连接检测到的所有的相机
 	void Connect();
